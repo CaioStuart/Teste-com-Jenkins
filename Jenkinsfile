@@ -7,17 +7,17 @@ pipeline {
                 git 'https://github.com/CaioStuart/Teste-com-Jenkins.git'
             }
         }
+
         stage('Build') {
             steps {
-                bat 'mkdir -p bin'
-                bat 'javac -cp "lib/*" -d bin src/testes/*.java'
+                bat 'mkdir bin'
+                bat 'javac -cp "lib\\junit-4.13.2.jar;lib\\hamcrest-core-1.3.jar" -d bin src\\testes\\*.java'
             }
         }
+
         stage('Test') {
             steps {
-                bat 'java -cp "lib/*;bin" org.junit.runner.JUnitCore testes.SomaTest1'
-                bat 'java -cp "lib/*;bin" org.junit.runner.JUnitCore testes.SomaTest2'
-                bat 'java -cp "lib/*;bin" org.junit.runner.JUnitCore testes.SomaTest3'
+                bat 'java -cp "bin;lib\\junit-4.13.2.jar;lib\\hamcrest-core-1.3.jar" org.junit.runner.JUnitCore testes.SomaTest1 testes.SomaTest2 testes.SomaTest3'
             }
         }
     }
