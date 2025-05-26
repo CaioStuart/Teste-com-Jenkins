@@ -8,6 +8,6 @@ public class SomaTest2 {
     @Test
     public void testeSoma() {
         Soma soma = new Soma();
-        assertEquals(30, soma.soma(10, 20));
+        assertEquals(30, soma.soma(5, 20));
     }
 }
